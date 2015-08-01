@@ -8,7 +8,7 @@ dice.dylib: dice.o
 build: dice.dylib
 
 run: dice.dylib
-	julia -p 8 driver.jl
+	julia -p 4 driver.jl
 
 clean:
 	-find . -name *.o -delete
