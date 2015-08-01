@@ -27,14 +27,14 @@ uint32_t randN(const int32_t N){
         rand();
         seeded = true;
     }
-
+    
     const uint32_t x = (RAND_MAX + 1u) / N;
-	const uint32_t y = x * N;
-	uint32_t r;
-	do {
-		r = rand();
-	} while(r >= y);
-	return r / x;
+    const uint32_t y = x * N;
+    uint32_t r;
+    do {
+    	r = rand();
+    } while(r >= y);
+    return r / x;
 }
 
 int32_t randrange(int32_t lower, int32_t upper){
@@ -45,7 +45,7 @@ int32_t minimum(int32_t a, int32_t b){
     return a <= b ? a : b;
 }
 
-static Face choose(const Die* d){
+static Face roll(const Die* d){
     return d->faces[randN(NUM_FACES)];
 }
 
@@ -53,8 +53,8 @@ int8_t simulate_game(const Die* d1, const Die* d2, int32_t max_score){
     int32_t sx = 0, sy = 0;
     Face x, y;
     do{
-        x = choose(d1);
-        y = choose(d2);
+        x = roll(d1);
+        y = roll(d2);
 
         if(x > y){
             sx += x - y;
